@@ -3,6 +3,10 @@ import { Product, FooterBanner, HeroBanner} from '../components'
 import { client } from '../lib/client';
 
 export default function Home({ products, bannerData }) {
+
+  console.log(bannerData)
+  console.log(products)
+
   return (
     <div>
 
@@ -36,4 +40,6 @@ export const getServerSideProps = async () => {
  return {
   props: { products, bannerData }
  }
+
+
 }

@@ -13,7 +13,13 @@ const ProductDetails = ({ product, products }) => {
 
    //destructure context
 
-   const { decQty, incQty, qty, onAdd } = useStateContext();
+   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+
+   const handleBuyNow = () => {
+    onAdd(product, qty);
+
+    setShowCart(true);
+  }
 
   return (
     <div>
@@ -26,6 +32,7 @@ const ProductDetails = ({ product, products }) => {
            <div className='small-images-container'>
               { image?.map((item, i) => (
                 <img
+                key={i}
                 src={urlFor(item)}
                 className={ i === index ? 'small-image selected-image' : 'small-image'}
                 onMouseEnter={() => setIndex(i)}
@@ -61,7 +68,7 @@ const ProductDetails = ({ product, products }) => {
           </div>
           <div className="buttons">
             <button type="button" className="add-to-cart" onClick={() => onAdd(product, qty)}>Add to Cart</button>
-            <button type="button" className="buy-now" >Buy Now</button>
+            <button type="button" className="buy-now" onClick={handleBuyNow} >Buy Now</button>
           </div>
         </div>
       </div>
